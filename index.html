@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>港校本科申请潮：内地学生为何涌向香港八大</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { background:#fff; font-family:'Segoe UI',Roboto,'Noto Sans',sans-serif; line-height:1.65; color:#1e2a3a; padding:40px 20px; }
+        .container { max-width:1280px; margin:0 auto; background:white; }
+        .main-title { font-size:2.2rem; font-weight:800; text-align:center; margin-bottom:20px; color:#0a2540; border-left:6px solid #2b6e9e; padding-left:20px; width:fit-content; margin-left:auto; margin-right:auto; }
+        .plain-text { font-size:1rem; margin:24px 0; text-align:justify; color:#2c3e4e; }
+        .chart-container { margin:32px 0 20px; background:#fff; border-radius:20px; box-shadow:0 5px 20px rgba(0,0,0,0.05); padding:16px 12px 8px; border:1px solid #eef2f5; }
+        .chart-wrapper { width:100%; height:500px; margin:0 auto; }
+        .chart-caption { text-align:center; font-size:0.8rem; color:#5e7a93; margin-top:8px; border-top:1px dashed #e2e8f0; padding-top:12px; }
+        .chart-caption a { color:#2b6e9e; text-decoration:none; border-bottom:1px dotted; }
+        .inset-quote { background:#f8fafc; border-left:5px solid #e84a2f; padding:20px 24px; margin:28px 0; border-radius:12px; }
+        .factor-list { background:#f9fbfd; padding:20px 28px; border-radius:24px; margin:24px 0; }
+        .interact-tip { font-size:0.75rem; color:#6c86a3; text-align:right; margin-top:6px; }
+        footer { text-align:center; margin-top:50px; padding:20px; color:#7b8a9b; font-size:0.75rem; border-top:1px solid #eef2f5; }
+        @media (max-width:700px){ .chart-wrapper { height:400px; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="main-title">港校本科申请潮：内地学生为何涌向香港八大</div>
+
+    <div class="plain-text">
+        据香港八大院校公开数据，近五年香港八大内地本科生人数持续增长，越来越多的内地学生选择赴港就读本科。
+    </div>
+
+    <!-- 图1：折线图 -->
+    <div class="chart-container">
+        <div id="trend-line-chart" class="chart-wrapper"></div>
+        <div class="chart-caption">
+            <a href="renshu" target="_blank">📊 原始Excel数据文件（入學人數统计，2020/21–2024/25学年）</a>
+        </div>
+        <div class="interact-tip">✅ 单击图例可显示/隐藏对应学校折线</div>
+    </div>
+
+    <div class="plain-text">
+        香港优化内地本科招生政策，是内地赴港就读本科人数上升的重要推动因素。
+    </div>
+    <div class="plain-text">
+        2023 年香港特区发布施政报告，自 2024/25 学年起，政府资助专上院校的非本地生招生上限上调至本地学额的 40%。2025 年施政报告进一步提出，由 2026/27 学年起，将非本地自费学生的招生上限提升至本地学额的 50%。
+    </div>
+
+    <!-- 图2：堆叠柱状图 -->
+    <div class="chart-container">
+        <div id="policy-stacked-bar" class="chart-wrapper" style="height:500px;"></div>
+        <div class="chart-caption">
+            <a href="renshu" target="_blank">📊 原始Excel数据文件（入學人數统计，2020/21–2024/25学年）</a>
+        </div>
+    </div>
+
+    <div class="inset-quote">
+        政策的持续调整，推动香港高校扩大内地招生规模，同时促使院校增设全新专业，为分数条件有限的内地学生，提供了更多赴港就读本科的机会。<br><br>
+        丁悦然作为内地学生，就读于香港浸会大学工商管理全球娱乐专业，该专业为该校新设专业。她正是港校扩招政策的受益者之一：“按照工商管理专业往年的录取要求，我的高考成绩还差 30 至 50 分。今年港校扩招政策正式落地，我留意到浸会开设了全新专业，录取门槛相对更低，我也因此压线被录取。浸会大学一直是我的理想院校，以我的分数水平，仅能报考该校这一新设专业。我能够成功入读，大部分原因都要归功于扩招政策。”
+    </div>
+
+    <div class="plain-text">
+        多重现实因素，也推动内地学生选择香港高校。
+    </div>
+
+    <!-- 雷达图（悬停单点显示单个因素分数） -->
+    <div class="chart-container">
+        <div id="radar-chart" class="chart-wrapper" style="height:560px;"></div>
+        <div class="chart-caption">
+            基于内地学生赴港就读本科调查问卷数据 (样本量 N=107) ，评分1~5分，分值越高影响越强。<br>
+            原始数据文件：<a href="https://pubref.paperol.cn/clientdown/359177251/359177251_1777557365mCc6ZE.xlsx" target="_blank">📎 问卷数据源 (Excel)</a>
+        </div>
+    </div>
+
+    <div class="factor-list">
+        <strong>1. 较低门槛与成本优势：</strong>香港就读本科性价比更高、环境安全，是内地学生的优选。据香港八大院校 2026/27 学年官方公示，港校非本地本科生年度学费区间为 17.5 万至 24.9 万港币，对比英美顶尖院校，整体学费更低。与此同时，依托 “一国两制” 优势，港校学历全球认可，能够有效降低海外政策变动带来的不确定风险。<br><br>
+        <strong>2. 就业发展空间广阔：</strong>港校具备国际化培养模式，依托香港本地及粤港澳大湾区的校招资源，可为学生提供丰富的实习与就业渠道。凭借较高的社会认可度，港校本科文凭的就业竞争力突出，成为内地学生择校的原因之一。<br><br>
+        <strong>3. 永居身份的政策红利：</strong>港校本科毕业生可申请 IANG 非本地毕业生留港签证，在港居住满七年还可申领香港永久身份。相关的配套政策，受到众多学生及家长的关注与重视。<br><br>
+        <strong>4. 综合学术实力突出:</strong>香港高校整体排名稳居国际前列，教育质量广受认可。在 2026 年泰晤士高等教育亚洲大学排名中，香港八所资助院校全部进入亚洲百强。其中，香港大学、香港中文大学位列亚洲前十；香港教育大学、岭南大学首次上榜，分别排名第 37 位、第 84 位；香港浸会大学升至第 40 位。香港高校整体实力稳步提升，持续吸引内地生源。
+    </div>
+
+    <div class="plain-text">
+        在多重现实因素的影响下，内地在港本科生的毕业发展选择更趋多元。部分学生计划毕业后留港就业发展，部分学生倾向返回内地寻求工作或深造机会，还有一部分学生则以港校本科学历为依托，申请海外院校继续深造。
+    </div>
+
+    <!-- 桑基图（按用户最新数据修正） -->
+    <div class="chart-container">
+        <div id="sankey-chart" class="chart-wrapper" style="height:520px;"></div>
+        <div class="chart-caption">
+            <a href="https://www.cedars.hku.hk/index.php?route=information/download&hash=8c7b13271bb0416a858a1b2232c6709f" target="_blank">🔗 香港大学2024届本科毕业生就业调查报告 (官方PDF)</a>
+        </div>
+    </div>
+
+    <div class="plain-text">
+        内地赴港就读本科人数上升，是现实条件与发展机遇共同作用的结果。对于选择港校的内地学生而言，这既是升学途径，也为个人未来发展提供了更多选择。
+    </div>
+    <footer>© 数据可视化 · 基于香港教资会及八大官方统计 | 新闻稿保留所有原文表述</footer>
+</div>
+
+<script>
+    // ========== 1. 折线图 ==========
+    const yearsLine = ['2021/22', '2022/23', '2023/24', '2024/25'];
+    const uniData = {
+        '香港大学': [776, 792, 616, 815],
+        '香港中文大学': [403, 426, 430, 557],
+        '香港科技大学': [248, 241, 281, 348],
+        '香港理工大学': [654, 698, 686, 1313],
+        '香港城市大学': [295, 274, 275, 389],
+        '香港浸会大学': [154, 219, 214, 416],
+        '香港教育大学': [99, 89, 111, 242],
+        '岭南大学': [90, 125, 136, 204]
+    };
+    const seriesList = Object.keys(uniData).map(name => ({ name, data: uniData[name] }));
+    const lineColors = {
+        '香港大学': '#003f5c', '香港中文大学': '#2b6e9e', '香港科技大学': '#4c8cae',
+        '香港理工大学': '#e84a2f', '香港城市大学': '#00a8a8', '香港浸会大学': '#f39c12',
+        '香港教育大学': '#2c7a47', '岭南大学': '#9b59b6'
+    };
+    const lineChart = echarts.init(document.getElementById('trend-line-chart'));
+    lineChart.setOption({
+        tooltip: { trigger: 'axis' },
+        legend: { type: 'scroll', orient: 'horizontal', left: 'center', top: 0, itemWidth: 40, textStyle: { color: '#1e4663' } },
+        grid: { left: '8%', right: '7%', top: '12%', bottom: '5%', containLabel: true },
+        xAxis: { type: 'category', data: yearsLine, name: '学年' },
+        yAxis: { type: 'value', name: '内地本科生入学人数 (人)', nameLocation: 'middle', nameGap: 45 },
+        series: seriesList.map(item => ({
+            name: item.name, type: 'line', data: item.data, smooth: false, symbol: 'circle', symbolSize: 6,
+            lineStyle: { width: 2.5, color: lineColors[item.name] }, itemStyle: { color: lineColors[item.name] }, emphasis: { focus: 'series' }
+        }))
+    });
+
+    // ========== 2. 堆叠柱状图 ==========
+    const stackedYears = ['2020/21', '2021/22', '2022/23', '2023/24', '2024/25'];
+    const localStudents = [20288, 20732, 21165, 21487, 21221];
+    const mainlandStudents = [2323, 2719, 2864, 2749, 4284];
+    const internationalStudents = [1114, 1123, 1120, 1126, 1477];
+    const stackedChart = echarts.init(document.getElementById('policy-stacked-bar'));
+    stackedChart.setOption({
+        tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' }, formatter: function(params) {
+            let total = 0;
+            let result = params[0].axisValue + '<br/>';
+            for (let p of params) {
+                result += `${p.marker} ${p.seriesName}: ${p.value} 人<br/>`;
+                total += p.value;
+            }
+            result += `<strong>总计: ${total} 人</strong>`;
+            return result;
+        } },
+        legend: { data: ['中国内地学生', '本地学生', '其他国际学生'], left: 'left', top: 0 },
+        grid: { left: '8%', right: '5%', top: '12%', bottom: '5%', containLabel: true },
+        xAxis: { type: 'category', data: stackedYears, name: '学年', axisLabel: { rotate: 0 } },
+        yAxis: { type: 'value', name: '学生人数 (人)', nameLocation: 'middle', nameGap: 45 },
+        series: [
+            { name: '中国内地学生', type: 'bar', stack: 'total', data: mainlandStudents, 
+              itemStyle: { color: '#e84a2f', borderRadius: [0,0,0,0] }, label: { show: true, position: 'inside', formatter: '{c}' } },
+            { name: '本地学生', type: 'bar', stack: 'total', data: localStudents, 
+              itemStyle: { color: '#2b6e9e' }, label: { show: true, position: 'inside', formatter: '{c}' } },
+            { name: '其他国际学生', type: 'bar', stack: 'total', data: internationalStudents, 
+              itemStyle: { color: '#6aa9c9' }, label: { show: true, position: 'inside', formatter: '{c}' } }
+        ],
+        graphic: [
+            { type: 'text', left: '10%', top: 60, style: { text: '⬆ 2024/25扩招政策落地\n非本地生限额20%→40%', fill: '#e84a2f', fontSize: 12, fontWeight:'bold' }, z: 100 }
+        ]
+    });
+
+    // ========== 3. 雷达图（悬停单点显示分数，样本107） ==========
+    const radarIndicatorsFull = [
+        { name: '签证风险', fullDesc: '担心欧美留学签证收紧或被拒签（如针对理工科的限制）' },
+        { name: '人身安全', fullDesc: '担心欧美社会的治安、枪支问题及针对亚裔的歧视/仇恨犯罪' },
+        { name: '国际关系', fullDesc: '地缘政治紧张（如中美关系）导致对海外留学环境的不确定感' },
+        { name: '距离往返', fullDesc: '距离家乡近，无时差，方便随时往返' },
+        { name: '学术排名', fullDesc: '香港「八大」在世界大学排名（QS/THE）中的高认可度' },
+        { name: '学制优势', fullDesc: '与国际接轨的全英文教学环境，且本科学制稳定' },
+        { name: '升学跳板', fullDesc: '希望以香港本科作为背景，未来更容易申请顶尖名校的碩博' },
+        { name: '师资力量', fullDesc: '看重香港高校引进的世界级教授团队及学术资源' },
+        { name: '留学成本', fullDesc: '相较于英美，香港的学费及生活费综合性价比高' },
+        { name: '奖学金机会', fullDesc: '香港高校提供的各类入学奖学金或专项资助' },
+        { name: '留港政策', fullDesc: '香港政府推出的「高才通」、IANG签证等吸引人才留港就业的政策' },
+        { name: '永久居留权', fullDesc: '考虑到在港就学加就业满七年可获得香港永久居⺠身份' },
+        { name: '大湾区机遇', fullDesc: '看好粤港澳大湾区融合发展及对香港毕业生的就业扶持' },
+        { name: '文化认同', fullDesc: '饮食习惯、文化背景与内地相似，适应压力较小' },
+        { name: '内地就业优势', fullDesc: '认为香港学历在国内大厂、公务员考录中具备竞争力' },
+        { name: '社交圈层', fullDesc: '留港内地学生群体庞大，更容易建立人脉与社交圈' },
+        { name: '社媒效应', fullDesc: '被社交平台上铺天盖地的「留港生活、求职攻略」所吸引' },
+        { name: '信息透明度', fullDesc: '认为香港院校的信息申请流程比国外更透明、更符合内地生的习惯' },
+        { name: '圈层推荐', fullDesc: '身边同学、亲戚或学⻓姐的成功案例，形成的「口碑传播」' },
+        { name: '家长意愿', fullDesc: '父母出于安全、距离考量，强烈建议或要求选择香港' },
+        { name: '未来支援', fullDesc: '考虑到家庭在内地/大湾区的人脉资源，在香港读书更容易衔接' }
+    ];
+    const radarScores = [1.96, 3.05, 3.09, 3.54, 3.39, 3.49, 3.79, 3.55, 3.51, 2.53, 3.53, 3.87, 3.53, 3.4, 3.06, 3.06, 2.48, 2.89, 2.74, 3.34, 3.13];
+    const radarIndicators = radarIndicatorsFull.map(item => ({ name: item.name, max: 5 }));
+    const radarChart = echarts.init(document.getElementById('radar-chart'));
+    radarChart.setOption({
+        tooltip: {
+            trigger: 'item',
+            triggerOn: 'mousemove',
+            formatter: function(params) {
+                if (params.componentType === 'series' && params.seriesType === 'radar') {
+                    const idx = params.dataIndex;
+                    const indicator = radarIndicatorsFull[idx];
+                    const score = params.value;
+                    return `<strong>${indicator.name}</strong><br/>${indicator.fullDesc}<br/>影响程度评分: ${score} / 5`;
+                }
+                return '';
+            }
+        },
+        radar: { indicator: radarIndicators, center: ['50%','50%'], radius: '65%', name: { textStyle: { fontSize: 10, color: '#2c5a7a' } } },
+        series: [{
+            type: 'radar', data: [{ value: radarScores, name: '影响因素强度' }],
+            areaStyle: { color: 'rgba(43,110,158,0.2)' }, lineStyle: { color: '#e84a2f', width: 2 },
+            symbolSize: 6, symbol: 'circle', itemStyle: { color: '#1c5f8e' }
+        }]
+    });
+
+    // ========== 4. 桑基图（严格按照用户最新数据） ==========
+    const sankeyNodes = [
+        { name: '港大2024届非本地毕业生' },
+        { name: '直接就业' }, { name: '继续深造' }, { name: '其他' },
+        { name: '留港就业' }, { name: '返回内地就业' }, { name: '其他地区就业' },
+        { name: '留港深造' }, { name: '美国深造' }, { name: '英国深造' }, { name: '大陆深造' }, { name: '其他地区深造' }
+    ];
+    const sankeyLinks = [
+        // 第一层：总数比例
+        { source: '港大2024届非本地毕业生', target: '直接就业', value: 50.8 },
+        { source: '港大2024届非本地毕业生', target: '继续深造', value: 41.9 },
+        { source: '港大2024届非本地毕业生', target: '其他', value: 7.3 },
+        // 就业去向内部比例（用户要求直接显示74.1%, 10%, 15.9%）
+        { source: '直接就业', target: '留港就业', value: 74.1 },
+        { source: '直接就业', target: '返回内地就业', value: 10.0 },
+        { source: '直接就业', target: '其他地区就业', value: 15.9 },
+        // 深造去向内部比例（用户要求57.8%, 17.8%, 12.8%, 0.6%, 11.0%）
+        { source: '继续深造', target: '留港深造', value: 57.8 },
+        { source: '继续深造', target: '美国深造', value: 17.8 },
+        { source: '继续深造', target: '英国深造', value: 12.8 },
+        { source: '继续深造', target: '大陆深造', value: 0.6 },
+        { source: '继续深造', target: '其他地区深造', value: 11.0 }
+    ];
+    const sankeyChart = echarts.init(document.getElementById('sankey-chart'));
+    sankeyChart.setOption({
+        tooltip: { trigger: 'item', formatter: (p) => p.dataType==='edge'? `${p.data.source} → ${p.data.target}<br/>占比: ${p.data.value}%` : p.name },
+        series: [{
+            type: 'sankey', layout: 'none', data: sankeyNodes, links: sankeyLinks,
+            nodeWidth: 28, nodeGap: 22, lineStyle: { color: 'gradient', curveness: 0.5 },
+            label: { fontSize: 11 }, emphasis: { focus: 'adjacency' }
+        }]
+    });
+
+    window.addEventListener('resize', () => {
+        lineChart.resize(); stackedChart.resize(); radarChart.resize(); sankeyChart.resize();
+    });
+</script>
+</body>
+</html>
